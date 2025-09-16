@@ -19,6 +19,21 @@
     <script>
         
         // add code here
+        function addItem(){
+            const selected = document.getElementById("select_item");
+            const cart = document.getElementById("shopList");
+
+            
+
+            const liElem = document.createElement("li");
+            liElem.innerText = selected.value;
+            cart.appendChild(liElem);
+
+            
+            };
+
+            document.getElementById("select_item").addEventListener("change", addItem);
+            
         
         
     </script>

@@ -11,19 +11,37 @@
 
    <input type="text" id="inputText">
    <!-- add a button here for adding new item -->
-
+   <button id="btn" onClick="addItem()">Enter</button>
    <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
+      <li>Notebook<button onclick="deleteItem(this.parentNode)">Delete</button></li>
+      <li>Jello<button onclick="deleteItem(this.parentNode)">Delete</button></li>
+      <li>Spinach<button onclick="deleteItem(this.parentNode)">Delete</button></li>
+      <li>Rice<button onclick="deleteItem(this.parentNode)">Delete</button></li>
+      <li>Birthday Cake<button onclick="deleteItem(this.parentNode)">Delete</button></li>
+      <li>Candles<button onclick="deleteItem(this.parentNode)">Delete</button></li>
    </ul>
 
    <script>
 
       // add code here
+      function addItem(){
+         const newFoodVal = document.getElementById("inputText").value;
+         const ulElem = document.getElementsByTagName("ul")[0]; // document.querySelector("ul")
+         const liElem = document.createElement("li");
+         liElem.innerText = newFoodVal;
+         const delBtnElem = document.createElement("button");
+         delBtnElem.innerText = 'Delete';
+         delBtnElem.addEventListener("click", function(){
+            deleteItem(this.parentNode)
+         })
+         liElem.appendChild(delBtnElem);
+         ulElem.appendChild(liElem);
+
+      }
+
+      function deleteItem(elem){
+         elem.remove();
+      }
 
    </script>
 
